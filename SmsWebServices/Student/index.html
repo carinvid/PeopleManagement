@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">People Management System</a>
+    </nav>
+
+    <div class="container">
+        <br>
+        <div class="col-md-12">
+            <div class="col-md-8">
+                <input type="button" class="btn btn-info" value="Create New" onclick="OpenModal()">
+            </div>
+            <div class="col-md-4" style="float:right">
+                <input type="text" class="form-control" id="txtSearch" placeholder="Search" oninput="GetStudents()">
+            </div>
+        </div>
+        <br>
+
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="active">
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Age</th>
+                        <th>Interests</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tblStdBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Create New</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="txtName">Name</label>
+                        <input type="text" class="form-control" id="txtName">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtAddress">Address</label>
+                        <input type="text" class="form-control" id="txtAddress">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtAge">Age</label>
+                        <input type="text" class="form-control" id="txtAge">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtInterests">Interests</label>
+                        <input type="text" class="form-control" id="txtInterests">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtInterests">Picture</label>
+                        <input type="file" class="btn btn-basic" id="fileUpload" accept="image/x-png,image/gif,image/jpeg" />
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="SaveStudent()">Save</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/template" id="templete">
+        <tr style="<%= color %>">
+            <td>
+                <img src="../Images/<%= picture %>" alt="No Img" width="50" height="50" class="img-circle" />
+                <%= name %>
+            </td>
+            <td><%= address %></td>
+            <td><%= age %></td>
+            <td><%= interests %></td>
+            <td>
+                <input type="button" class="btn btn-danger btn-sm" value="Delete" onclick="DeleteStudent('<%= id %>')" />
+            </td>
+        </tr>
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+    <script src="underscore.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
